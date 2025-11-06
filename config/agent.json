@@ -1,0 +1,241 @@
+{
+  "name": "SSL Certificate Checker Agent",
+  "description": "AI-powered agent for checking SSL/TLS certificates and providing security analysis. Uses Google Gemini for intelligent certificate interpretation and conversational responses about certificate security, expiration, and best practices.",
+  "url": "https://your-agent-domain.com/a2a/ssl",
+  "version": "2.0.0",
+  "provider": {
+    "organization": "HNGi13",
+    "url": "https://github.com/your-username/ssl_certificate_checker_agent"
+  },
+  "documentationUrl": "https://your-agent-domain.com/docs",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "conversation": true,
+    "multimodal": false
+  },
+  "model": {
+    "provider": "Google",
+    "name": "gemini-2.5-flash",
+    "capabilities": [
+      "function_calling",
+      "thinking",
+      "streaming",
+      "conversation"
+    ]
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "ssl_single_check",
+      "name": "Single Domain SSL Check",
+      "description": "Check SSL certificate for a single domain with AI-powered analysis, providing detailed certificate information, expiration status, and intelligent insights.",
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "examples": [
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "Check SSL for github.com",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "✅ GitHub's SSL certificate is valid and secure. It expires on March 15, 2025, which is 120 days away. The certificate is issued by DigiCert Inc and uses strong 2048-bit encryption.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "Is google.com's certificate valid and how many days until it expires?",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "✅ Yes, google.com's certificate is valid! It will expire in 95 days on February 20, 2025. The certificate is in good standing with no immediate concerns.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ssl_multiple_check",
+      "name": "Multiple Domain SSL Check",
+      "description": "Check and compare SSL certificates for multiple domains simultaneously with intelligent summary and analysis.",
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "examples": [
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "Check SSL for github.com, gitlab.com, and bitbucket.org",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "I've checked all three domains:\n\n✅ github.com - Valid until March 15, 2025 (120 days)\n✅ gitlab.com - Valid until April 1, 2025 (135 days)\n✅ bitbucket.org - Valid until February 28, 2025 (105 days)\n\nAll certificates are in good standing with no immediate concerns.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "Compare certificates for google.com and bing.com",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "Both google.com and bing.com have valid certificates. Google's expires in 95 days while Bing's expires in 87 days. Both are well within safe renewal periods.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ssl_security_analysis",
+      "name": "SSL Security Analysis",
+      "description": "Provide detailed security analysis and explanations about certificate status, expiration implications, and security best practices.",
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "examples": [
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "What happens if example.com's certificate expires?",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "If example.com's certificate expires, several critical issues occur:\n\n🚨 Browsers will display security warnings\n🚨 Users may be blocked from accessing the site\n🚨 Search engine rankings could be negatively affected\n🚨 API integrations may fail\n\nIt's crucial to renew certificates before expiration to maintain security and trust.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "Analyze the certificate security for my-domain.com",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "Let me check and analyze my-domain.com's certificate security... [performs check and provides detailed analysis]",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "conversational_ssl_help",
+      "name": "Conversational SSL Help",
+      "description": "Answer questions about SSL certificates, provide guidance on best practices, and explain certificate concepts in plain language.",
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ],
+      "examples": [
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "Why do certificates expire?",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "SSL certificates expire for several important security reasons:\n\n1. **Security Updates**: Cryptographic standards evolve, and expiration ensures certificates use current security practices\n2. **Identity Verification**: Regular renewal confirms the domain owner still controls the site\n3. **Key Rotation**: Limiting certificate lifetime reduces the impact if a private key is compromised\n\nMost certificates are valid for 1 year now (previously 2-3 years) to enhance security.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        },
+        {
+          "input": {
+            "parts": [
+              {
+                "text": "How often should I renew my certificate?",
+                "contentType": "text/plain"
+              }
+            ]
+          },
+          "output": {
+            "parts": [
+              {
+                "text": "Best practice is to renew your certificate 30 days before expiration. This gives you a buffer for any renewal issues. Consider using automatic renewal services like Let's Encrypt to ensure your certificate never expires.",
+                "contentType": "text/plain"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "email": "your-email@example.com",
+    "support": "https://your-support-url.com"
+  },
+  "supportsAuthenticatedExtendedCard": false
+}

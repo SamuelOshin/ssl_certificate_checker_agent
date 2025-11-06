@@ -1,0 +1,18 @@
+{
+  "jsonrpc": "2.0",
+  "method": "message/send",
+  "params": {
+    "message": {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Check SSL for github.com and google.com"
+        },
+        {
+          "data": []
+        }
+      ]
+    }
+  },
+  "id": "test-2"
+}
