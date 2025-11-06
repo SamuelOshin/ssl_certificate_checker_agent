@@ -1,0 +1,27 @@
+{
+  "active": true,
+  "category": "security",
+  "description": "AI-powered SSL certificate monitoring and validation agent",
+  "id": "ssl-certificate-checker",
+  "long_description": "Hey! I'm SSL Guardian, your AI-powered SSL certificate monitoring agent. I help teams ensure their websites and APIs have valid, secure SSL/TLS certificates.\n\nJust share a domain name with me and I'll:\n- Check SSL certificate validity and expiration dates\n- Analyze certificate issuer and security details\n- Flag certificates expiring within 30 days\n- Provide detailed security information (key size, algorithms, SANs)\n- Support checking multiple domains simultaneously\n\nI can monitor single domains or batch check multiple sites. I keep things clear with emoji indicators: ✅ (valid), ⚠️ (expiring soon), ❌ (expired).\n\nWhen we chat, if you say hi or ask what I do, I'll explain and ask which domain(s) you'd like me to check. Just mention domain names like 'github.com' or 'check google.com, stackoverflow.com' and I'll get to work!\n\nPerfect for:\n- Pre-deployment security checks\n- Regular certificate monitoring\n- Troubleshooting SSL issues\n- Compliance verification",
+  "name": "SSL Guardian",
+  "nodes": [
+    {
+      "id": "ssl_checker_agent",
+      "name": "SSL Certificate Checker Agent",
+      "parameters": {},
+      "position": [
+        856,
+        -112
+      ],
+      "type": "a2a/generic-a2a-node",
+      "typeVersion": 1,
+      "url": "https://ssl-certificate-checker-agent.up.railway.app/a2a/ssl"
+    }
+  ],
+  "pipData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "short_description": "Monitor SSL certificates and send security reports"
+}
